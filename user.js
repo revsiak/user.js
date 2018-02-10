@@ -5,6 +5,7 @@ user_pref("extensions.update.enabled", false);
 // Telemetry Preferences
 user_pref("toolkit.telemetry.enabled", false);
 user_pref("datareporting.healthreport.uploadEnabled", false);
+user_pref("breakpad.reportURL", "");
 
 
 
@@ -12,14 +13,33 @@ user_pref("datareporting.healthreport.uploadEnabled", false);
 user_pref("layers.acceleration.disabled", false);
 user_pref("gfx.direct2d.disabled", false);
 
+// Font Rendering Preferences
+user_pref("gfx.font_rendering.cleartype_params.rendering_mode", 2);
+
 // Off-Main-Thread Rendering Preferences
 user_pref("layers.offmainthreadcomposition.enabled", true);
 user_pref("layers.offmainthreadcomposition.async-animations", true);
 user_pref("layers.omtp.enabled", true);
 
+// Parallel Browser Rendering Preferences
+user_pref("layout.css.servo.enabled", true);
+user_pref("layout.css.servo.chrome.enabled", true);
+
+// GPU Browser Rendering Preferences
+//user_pref("gfx.webrender.enabled", true);
+//user_pref("gfx.webrender.layers-free", true);
+//user_pref("gfx.webrender.blob-images", true);
+//user_pref("gfx.webredest.enabled", true);
+user_pref("layers.mlgpu.enabled", true);
+user_pref("layers.mlgpu.enable-on-windows7", true);
+//user_pref("layout.display-list.dump", true);
+//user_pref("layout.display-list.dump-content", true);
+//user_pref("layout.display-list.retain", true);
+//user_pref("layout.display-list.rebuild-frame-limit", 700);
+
 // Asynchronous Pan & Zoom Preferences
 user_pref("layers.async-pan-zoom.enabled", true);
-//user_pref("apz.drag.enabled", true);
+user_pref("apz.drag.enabled", true);
 //user_pref("apz.keyboard.enabled", true);
 //user_pref("apz.popups.enabled", true);
 //user_pref("apz.disable_for_scrolled_linked_effects", false);
@@ -29,44 +49,29 @@ user_pref("apz.allow_checkerboarding", false);
 user_pref("browser.tabs.remote.autostart", true);
 user_pref("dom.ipc.processCount", 1);
 user_pref("dom.ipc.processPrelaunch.enabled", true);
-user_pref("security.sandbox.content.level", 1);
+user_pref("security.sandbox.content.level", 3);
 //user_pref("dom.noopener.newprocess.enabled", false);
+//user_pref("dom.largeAllocationHeader.enabled", false);
+//user_pref("dom.ipc.processCount.webLargeAllocation", 0);
 user_pref("browser.tabs.remote.separateFileUriProcess", true);
 user_pref("browser.tabs.remote.allowLinkedWebInFileUriProcess", false);
 user_pref("dom.ipc.processCount.file", 1);
-user_pref("extensions.webextensions.remote", false);
-user_pref("dom.ipc.processCount.extension", 1);
-user_pref("layers.gpu-process.enabled", false);
-//user_pref("dom.largeAllocationHeader.enabled", false);
-//user_pref("dom.ipc.processCount.webLargeAllocation", 0);
+//user_pref("extensions.webextensions.remote", false);
+//user_pref("dom.ipc.processCount.extension", 1);
+user_pref("layers.gpu-process.enabled", true);
 
-// Parallel Browser Rendering Preferences
-user_pref("layout.css.servo.enabled", true);
-user_pref("layout.css.servo.chrome.enabled", true);
+// Predictive Tab Rendering Preferences
+user_pref("browser.tabs.remote.warmup.enabled", true);
+user_pref("browser.tabs.remote.warmup.maxTabs", 2);
+user_pref("browser.tabs.remote.warmup.unloadDelayMs", 2000);
 
-// GPU Browser Rendering Preferences
-user_pref("gfx.webrender.enabled", true);
-user_pref("gfx.webrender.blob-images", true);
-//user_pref("gfx.webredest.enabled", true);
-user_pref("layers.mlgpu.enabled", true);
-user_pref("layers.mlgpu.enable-on-windows7", true);
-//user_pref("layout.display-list.dump", true);
-//user_pref("layout.display-list.dump-content", true);
-//user_pref("layout.display-list.retain", true);
-//user_pref("layout.display-list.rebuild-frame-limit", 700);
+
 
 // DOM Scheduler Preferences
 user_pref("dom.ipc.scheduler", true);
 user_pref("dom.ipc.scheduler.threadCount", 2);
 //user_pref("dom.ipc.preemption", false);
 //user_pref("dom.ipc.useMultipleQueues", true);
-
-// Speculative Tab Rendering Preferences
-user_pref("browser.tabs.remote.warmup.enabled", true);
-user_pref("browser.tabs.remote.warmup.maxTabs", 2);
-user_pref("browser.tabs.remote.warmup.unloadDelayMs", 2000);
-
-
 
 // Background Tab Throttling Preferences
 user_pref("dom.timeout.enable_budget_timer_throttling", true);
@@ -81,24 +86,20 @@ user_pref("dom.timeout.foreground_budget_regeneration_rate", 1);
 user_pref("dom.min_timeout_value", 20);
 user_pref("dom.min_background_timeout_value", 1000);
 
-// Script Run-Time
+// Script Run-Time Preferences
 user_pref("dom.max_script_run_time", 8);
 user_pref("dom.max_chrome_script_run_time", 20);
 user_pref("dom.max_ext_content_script_run_time", 2);
 
 
 
-
-
-// Cookie Preferences
-//user_pref("network.cookie.cookieBehavior", 1);
-
 // TCP/IP Preferences
-//user_pref("network.tcp.tcp_fastopen_enable", true);
+user_pref("network.tcp_keepalive.enabled", true);
+user_pref("network.tcp.tcp_fastopen_enable", true);
 
 // Network Preferences
 user_pref("network.http.max-connections", 200);
-user_pref("network.http.max-connections-per-server", 18);
+user_pref("network.http.max-connections-per-server", 20);
 user_pref("network.http.max-persistent-connections-per-server", 8);
 
 // Speculative Network Preferences
@@ -112,7 +113,7 @@ user_pref("network.http.speculative-parallel-limit", 2);
 user_pref("browser.urlbar.speculativeconnect.enabled", false);
 user_pref("network.prefetch-next", false);
 
-// Context-Driven Network Priority Preferences
+// Network Priority Preferences
 user_pref("network.http.throttle.enable", true);
 user_pref("network.http.throttle.suspend-for", 800);
 user_pref("network.http.throttle.resume-for", 100);
@@ -134,7 +135,7 @@ user_pref("network.http.tailing.delay-quantum", 800);
 user_pref("network.http.tailing.delay-quantum-after-domcontentloaded", 100);
 user_pref("network.http.tailing.delay-max", 8000);
 
-// Race-Cache-With_Network Preferences
+// Race-Cache-With-Network Preferences
 user_pref("network.http.rcwn.enabled", true);
 user_pref("network.http.rcwn.small_resource_size_kb", 256);
 user_pref("network.http.rcwn.min_wait_before_racing_ms", 0);
@@ -144,7 +145,20 @@ user_pref("network.http.rcwn.cache_queue_priority_threshold", 2);
 
 
 
-// History Preferences
+// Memory Cache Preferences
+user_pref("browser.cache.memory.enable", true);
+user_pref("browser.cache.memory.max_entry_size", 8000);
+user_pref("browser.cache.memory.capacity", 200000);
+
+// Disk Cache Preferences
+user_pref("browser.cache.disk.enable", true);
+user_pref("browser.cache.disk.cache_ssl", true);
+user_pref("browser.cache.disk.max_entry_size", 8000);
+user_pref("browser.cache.disk.capacity", 2000000);
+
+
+
+// Tab History Preferences
 user_pref("browser.sessionhistory.max_total_viewers", 8);
 user_pref("browser.sessionhistory.max_entries", 200);
 
@@ -162,16 +176,11 @@ user_pref("browser.sessionstore.max_serialize_forward", -1);
 user_pref("browser.sessionstore.max_tabs_undo", 20);
 user_pref("browser.sessionstore.max_windows_undo", 1);
 
-// Memory Cache Preferences
-user_pref("browser.cache.memory.enable", true);
-user_pref("browser.cache.memory.max_entry_size", 8000);
-user_pref("browser.cache.memory.capacity", 200000);
 
-// Disk Cache Preferences
-user_pref("browser.cache.disk.enable", true);
-user_pref("browser.cache.disk.cache_ssl", true);
-user_pref("browser.cache.disk.max_entry_size", 20000);
-user_pref("browser.cache.disk.capacity", 2000000);
+
+// Cookie Preferences
+user_pref("network.cookie.cookieBehavior", 1);
+
 
 
 // Start Page Preferences
@@ -200,10 +209,20 @@ user_pref("browser.tabs.loadDivertedInBackground", true);
 user_pref("browser.tabs.insertRelatedAfterCurrent", false);
 user_pref("browser.tabs.selectOwnerOnClose", false);
 user_pref("browser.tabs.warnOnOpen", true);
-user_pref("browser.tabs.maxOpenBeforeWarn", 7);
+user_pref("browser.tabs.maxOpenBeforeWarn", 8);
 user_pref("browser.tabs.warnOnClose", true);
 user_pref("browser.tabs.warnOnCloseOtherTabs", true);
 user_pref("browser.tabs.closeWindowWithLastTab", false);
+user_pref("browser.tabs.extraDragSpace", true);
+user_pref("browser.tabs.restorebutton", 1);
+
+// Translation
+user_pref("browser.translation.detectLanguage", true);
+user_pref("browser.translation.ui.show", true);
+user_pref("browser.translation.engine", "bing");
+user_pref("browser.translation.bing.clientId", );
+user_pref("browser.translation.bing.apiKeyOverride", )
+
 
 
 // Link Preferences
@@ -216,10 +235,12 @@ user_pref("dom.popup_maximum", 1);
 user_pref("dom.disable_open_during_load", true);
 user_pref("dom.disable_open_click_delay", 2000);
 user_pref("dom.popup_allowed_events", "click submit");
-
 user_pref("privacy.popups.disable_from_plugins", 2);
+user_pref("security.data_uri.block_toplevel_data_uri_navigations", true);
 
-// Event Preferences
+
+
+// Web API Preferences
 user_pref("geo.enabled", false);
 user_pref("media.peerconnection.enabled", false);
 user_pref("network.websocket.enabled", false);
@@ -232,13 +253,15 @@ user_pref("dom.vr.enabled", false);
 user_pref("dom.vibrator.enabled", false);
 user_pref("webgl.disabled", true);
 
+// Event Preferences
 user_pref("dom.event.contextmenu.enabled", false);
 user_pref("dom.event.clipboardevents.enabled", false);
 user_pref("browser.tabs.dontfocusfordialogs", true);
-user_pref("dom.disable_beforeunload", true);
+user_pref("dom.disable_beforeunload", false);
 user_pref("dom.require_user_interaction_for_beforeunload", true);
-user_pref("browser.meta_refresh_when_inactive.disabled", true);
 user_pref("accessibility.blockautorefresh", true);
+user_pref("browser.meta_refresh_when_inactive.disabled", true);
+user_pref("network.http.redirection-limit", 2);
 //user_pref("accessibility.blockjsredirection", true);
 
 user_pref("dom.disable_window_move_resize", false);
@@ -257,19 +280,11 @@ user_pref("dom.disable_window_open_feature.close", true);
 user_pref("dom.disable_window_open_feature.minimizable", true);
 user_pref("dom.disable_window_open_feature.resizable", false);
 
-user_pref("network.http.redirection-limit", 8);
-user_pref("security.data_uri.block_toplevel_data_uri_navigations", true);
+
 
 // Form Preferences
 user_pref("browser.formfill.enable", false);
 user_pref("layout.spellcheckDefault", 2);
-
-// Javascript Preferences
-user_pref("javascript.options.ion", true);
-user_pref("javascript.options.ion.offthread_compilation", true);
-user_pref("dom.script_loader.bytecode_cache.enabled", true);
-user_pref("javascript.options.compact_on_user_inactive", true);
-user_pref("javascript.options.compact_on_user_inactive_delay", 200000);
 
 // Login Preferences
 user_pref("signon.rememberSignons", true);
@@ -299,16 +314,26 @@ user_pref("slider.snapMultiplier", 0);
 user_pref("pdfjs.disabled", true);
 user_pref("browser.taskbar.lists.enabled", false);
 user_pref("browser.taskbar.previews.enable", false);
-user_pref("extensions.pocket.enabled", false);
-user_pref("reader.parse-on-load.enabled", false);
 user_pref("experiments.enabled", false);
-//user_pref("extensions.screenshots.disabled", false);
-//user_pref("extensions.formautofill.available", "off");
+user_pref("extensions.formautofill.available", "off");
+user_pref("extensions.pocket.enabled", false);
+user_pref("extensions.screenshots.disabled", false);
+user_pref("reader.parse-on-load.enabled", false);
+
+
 
 // Plugin Preferences
 user_pref("plugins.click_to_play", true);
 user_pref("dom.ipc.plugins.asyncInit.enabled", true);
 user_pref("dom.ipc.plugins.asyncdrawing.enabled", true);
+
+// Media Preferences
+user_pref("html5.offmainthread", true);
+user_pref("media.hardware-video-decoding.enabled", true);
+user_pref("media.suspend-bkgnd-video.enabled", false);
+user_pref("media.autoplay.enabled", true);
+user_pref("media.block-play-until-visible", false);
+user_pref("media.block-autoplay-until-in-foreground", false);
 
 // Image Preferences
 user_pref("image.mem.discardable", true);
@@ -322,20 +347,10 @@ user_pref("image.multithreaded_decoding.limit", -1);
 //user_pref("image.mem.decode_bytes_at_a_time", 16384);
 user_pref("image.max_decoded_image_kb", 256000);
 
-// Video & Audio Preferences
-user_pref("html5.offmainthread", true);
-user_pref("media.autoplay.enabled", false);
-user_pref("media.suspend-bkgnd-video.enabled", true);
-user_pref("media.block-play-until-visible", false);
-user_pref("media.block-autoplay-until-in-foreground", false);
-user_pref("media.hardware-video-decoding.enabled", true);
+
 
 user_pref("dom.animations.offscreen-throttling", true);
 user_pref("security.data_uri.unique_opaque_origin", true);
 user_pref("nglayout.enable_drag_images", false);
 user_pref("browser.chrome.toolbar_tips", false);
-
-user_pref("ui.caretWidth", 2);
-
-// Font Rendering Preferences
-user_pref("gfx.font_rendering.cleartype_params.rendering_mode", 2);
+user_pref("browser.places.useAsyncTransactions", true);
