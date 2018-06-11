@@ -9,26 +9,12 @@ user_pref("breakpad.reportURL", "");
 
 
 
-// Multiple-Process Preferences
-user_pref("browser.tabs.remote.autostart", true);
-user_pref("dom.ipc.processCount", 1);
-user_pref("dom.ipc.processPrelaunch.enabled", true);
-user_pref("security.sandbox.content.level", 3);
-//user_pref("dom.noopener.newprocess.enabled", false);
-//user_pref("dom.largeAllocationHeader.enabled", false);
-//user_pref("dom.ipc.processCount.webLargeAllocation", 0);
-user_pref("browser.tabs.remote.separateFileUriProcess", true);
-user_pref("browser.tabs.remote.allowLinkedWebInFileUriProcess", false);
-user_pref("dom.ipc.processCount.file", 1);
-//user_pref("extensions.webextensions.remote", false);
-//user_pref("dom.ipc.processCount.extension", 1);
-user_pref("layers.gpu-process.enabled", true);
-
-
-
 // Hardware Acceleration Preferences
 user_pref("layers.acceleration.disabled", false);
 user_pref("gfx.direct2d.disabled", false);
+
+// Font Rendering Preferences
+user_pref("gfx.font_rendering.cleartype_params.rendering_mode", 2);
 
 // Asynchronous Pan & Zoom Preferences
 user_pref("layers.async-pan-zoom.enabled", true);
@@ -43,30 +29,46 @@ user_pref("layers.offmainthreadcomposition.enabled", true);
 user_pref("layers.offmainthreadcomposition.async-animations", true);
 user_pref("layers.omtp.enabled", true);
 
+// Selective Browser Rendering Preferences
+user_pref("layout.display-list.rebuild-frame-limit", 600);
+user_pref("layout.display-list.retain", true);
+user_pref("layout.display-list.retain.chrome", true);
+
 // Parallel Rendering Preferences
 user_pref("layout.css.servo.enabled", true);
 user_pref("layout.css.servo.chrome.enabled", true);
 
 // GPU Browser Rendering Preferences
-//user_pref("gfx.webrender.enabled", true);
+user_pref("gfx.webrender.enabled", true);
 //user_pref("gfx.webrender.layers-free", true);
 //user_pref("gfx.webrender.blob-images", true);
 //user_pref("gfx.webredest.enabled", true);
-user_pref("layers.mlgpu.enabled", true);
-user_pref("layers.mlgpu.enable-on-windows7", true);
-//user_pref("layout.display-list.dump", true);
-//user_pref("layout.display-list.dump-content", true);
-//user_pref("layout.display-list.retain", true);
-//user_pref("layout.display-list.rebuild-frame-limit", 700);
-//user_pref("layout.display-list.retain.chrome", true);
 
 // Speculative Rendering Preferences
 user_pref("browser.tabs.remote.warmup.enabled", true);
 user_pref("browser.tabs.remote.warmup.maxTabs", 2);
 user_pref("browser.tabs.remote.warmup.unloadDelayMs", 2000);
 
-// Font Rendering Preferences
-user_pref("gfx.font_rendering.cleartype_params.rendering_mode", 6);
+// Advanced Layers Preferences
+user_pref("layers.mlgpu.enabled", true);
+user_pref("layers.mlgpu.enable-on-windows7", true);
+
+
+
+// Multiple-Process Preferences
+user_pref("browser.tabs.remote.autostart", true);
+user_pref("dom.ipc.processCount", 1);
+user_pref("dom.ipc.processPrelaunch.enabled", true);
+user_pref("security.sandbox.content.level", 3);
+//user_pref("dom.noopener.newprocess.enabled", false);
+//user_pref("dom.largeAllocationHeader.enabled", false);
+//user_pref("dom.ipc.processCount.webLargeAllocation", 0);
+user_pref("browser.tabs.remote.separateFileUriProcess", true);
+user_pref("browser.tabs.remote.allowLinkedWebInFileUriProcess", false);
+user_pref("dom.ipc.processCount.file", 1);
+//user_pref("extensions.webextensions.remote", false);
+//user_pref("dom.ipc.processCount.extension", 1);
+user_pref("layers.gpu-process.enabled", true);
 
 
 
@@ -104,7 +106,7 @@ user_pref("network.cookie.cookieBehavior", 1);
 //user_pref("network.tcp.tcp_fastopen_enable", true);
 
 // Network Preferences
-user_pref("network.http.max-connections", 280);
+user_pref("network.http.max-connections", 800);
 user_pref("network.http.max-connections-per-server", 20);
 user_pref("network.http.max-persistent-connections-per-server", 8);
 
@@ -126,7 +128,7 @@ user_pref("network.http.throttle.resume-for", 100);
 user_pref("network.http.throttle.resume-background-in", 1000);
 user_pref("network.http.throttle.time-window", 2000);
 
-// 2
+// V2
 user_pref("network.http.throttle.hold-time-ms", 800);
 user_pref("network.http.throttle.max-time-ms", 600);
 user_pref("network.http.throttle.read-interval-ms", 600);
@@ -196,24 +198,6 @@ user_pref("browser.cache.disk.capacity", 2000000);
 
 
 
-// Start Page Preferences
-user_pref("browser.startup.page", 1);
-user_pref("browser.startup.homepage", "about:blank");
-
-// Tab Page Preferences
-user_pref("browser.newtabpage.enabled", false);
-user_pref("browser.newtabpage.activity-stream.enabled", false);
-user_pref("browser.newtab.url", "about:blank");
-user_pref("browser.pagethumbnails.capturing_disabled", true);
-
-// Location Bar Preferences
-user_pref("browser.urlbar.autoFill", false);
-user_pref("browser.urlbar.autocomplete.enabled", false);
-user_pref("browser.urlbar.formatting.enabled", true);
-user_pref("browser.urlbar.trimURLs", false);
-user_pref("browser.urlbar.clickSelectsAll", false);
-user_pref("browser.urlbar.doubleClickSelectsAll", true);
-
 // Tab Bar Preferences
 user_pref("browser.tabs.onTop", true);
 user_pref("browser.tabs.drawInTitlebar", true);
@@ -228,21 +212,80 @@ user_pref("browser.tabs.warnOnClose", true);
 user_pref("browser.tabs.warnOnCloseOtherTabs", true);
 user_pref("browser.tabs.closeWindowWithLastTab", false);
 
+// Location Bar Preferences
+user_pref("browser.urlbar.autoFill", false);
+user_pref("browser.urlbar.autocomplete.enabled", false);
+user_pref("browser.urlbar.formatting.enabled", true);
+user_pref("browser.urlbar.trimURLs", false);
+user_pref("browser.urlbar.clickSelectsAll", false);
+user_pref("browser.urlbar.doubleClickSelectsAll", true);
+
+// Scrollbar Preferences
+user_pref("general.autoScroll", false);
+user_pref("general.smoothScroll", false);
+user_pref("ui.scrollToClick", 1);
+user_pref("slider.snapMultiplier", 0);
+
+// Start Page Preferences
+user_pref("browser.startup.page", 1);
+user_pref("browser.startup.homepage", "about:blank");
+
+// Tab Page Preferences
+user_pref("browser.newtabpage.enabled", false);
+user_pref("browser.newtabpage.activity-stream.enabled", false);
+user_pref("browser.newtab.url", "about:blank");
+user_pref("browser.pagethumbnails.capturing_disabled", true);
 
 
-// Translation Preferences
-//user_pref("browser.translation.detectLanguage", true);
-//user_pref("browser.translation.ui.show", true);
-//user_pref("browser.translation.engine", "bing");
-//user_pref("browser.translation.bing.clientId", );
-//user_pref("browser.translation.bing.apiKeyOverride", );
+
+// Selection Preferences
+user_pref("browser.triple_click_selects_paragraph", true);
+user_pref("layout.word_select.eat_space_to_next_word", false);
+user_pref("layout.word_select.stop_at_punctuation", true);
+user_pref("layout.word_select.stop_at_underscore", false);
+
+// Form Preferences
+user_pref("browser.formfill.enable", false);
+user_pref("layout.spellcheckDefault", 2);
+
+// Login Preferences
+user_pref("signon.rememberSignons", true);
+user_pref("signon.storeWhenAutocompleteOff", true);
+user_pref("signon.formlessCapture.enabled", true);
+user_pref("signon.autofillForms", false);
+user_pref("signon.insecure_password.ui.enabled", false);
+user_pref("security.insecure_field_warning.contextual.enabled", false);
+user_pref("network.auth.subresource-img-cross-origin-http-auth-allow", false);
 
 // Link Preferences
 user_pref("browser.link.open_newwindow", 3);
 user_pref("browser.link.open_newwindow.restriction", 2);
 user_pref("browser.link.open_newwindow.override.external", -1);
 
+// Image Preferences
+user_pref("image.mem.discardable", true);
+user_pref("image.mem.animated.discardable", true);
+user_pref("image.mem.allow_locking_in_content_processes", true);
+user_pref("image.mem.shared", true);
+user_pref("image.multithreaded_decoding.limit", -1);
+user_pref("image.multithreaded_decoding.idle_timeout", 480000);
 
+// Plugin Preferences
+user_pref("dom.ipc.plugins.asyncInit.enabled", true);
+user_pref("dom.ipc.plugins.asyncdrawing.enabled", true);
+user_pref("plugins.click_to_play", true);
+
+// Media Preferences
+user_pref("html5.offmainthread", true);
+user_pref("media.hardware-video-decoding.enabled", true);
+user_pref("media.gpu-process-decoder", true);
+user_pref("media.dormant-on-pause-timeout-ms", 2000);
+user_pref("media.suspend-bkgnd-video.enabled", true);
+user_pref("media.suspend-bkgnd-video.delay-ms", 8000);
+user_pref("media.autoplay.enabled", false);
+user_pref("media.autoplay.enabled.user-gestures-needed", false);
+user_pref("media.block-play-until-visible", false);
+user_pref("media.block-autoplay-until-in-foreground", false);
 
 // Popup Blocker Preferences
 user_pref("dom.popup_maximum", 1);
@@ -266,8 +309,6 @@ user_pref("browser.history.allowPushState", false);
 user_pref("browser.history.allowReplaceState", false);
 user_pref("browser.history.allowPullState", false);
 
-
-
 // Web API Preferences
 user_pref("geo.enabled", false);
 user_pref("media.peerconnection.enabled", false);
@@ -275,6 +316,8 @@ user_pref("network.websocket.enabled", false);
 user_pref("dom.workers.enabled", false);
 user_pref("dom.serviceWorkers.enabled", false);
 user_pref("dom.push.enabled", false);
+//user_pref("dom.push.connection.enabled", false);
+//user_pref("dom.push.alwaysConnect", false);
 user_pref("dom.webnotification.enabled", false);
 user_pref("dom.webnotification.requireinteraction.enabled", true);
 user_pref("dom.battery.enabled", false);
@@ -282,6 +325,19 @@ user_pref("dom.gamepad.enabled", false);
 user_pref("dom.vr.enabled", false);
 user_pref("dom.vibrator.enabled", false);
 user_pref("webgl.disabled", false);
+user_pref("device.sensors.ambientLight.enabled", false);
+user_pref("device.sensors.motion.enabled", false);
+user_pref("device.sensors.orientation.enabled", false);
+user_pref("device.sensors.proximity.enabled", false);
+user_pref("dom.webmidi.enabled", false);
+
+// Browser Feature Preferences
+user_pref("pdfjs.disabled", true);
+user_pref("reader.parse-on-load.enabled", false);
+user_pref("experiments.enabled", false);
+user_pref("extensions.formautofill.available", "off");
+user_pref("extensions.pocket.enabled", false);
+user_pref("extensions.screenshots.disabled", false);
 
 
 
@@ -301,25 +357,14 @@ user_pref("dom.disable_window_open_feature.resizable", false);
 
 
 
-// Selection Preferences
-user_pref("browser.triple_click_selects_paragraph", true);
-user_pref("layout.word_select.eat_space_to_next_word", false);
-user_pref("layout.word_select.stop_at_punctuation", true);
-
-// Form Preferences
-user_pref("browser.formfill.enable", false);
-user_pref("layout.spellcheckDefault", 2);
-
-// Login Preferences
-user_pref("signon.rememberSignons", true);
-user_pref("signon.storeWhenAutocompleteOff", true);
-user_pref("signon.formlessCapture.enabled", true);
-user_pref("signon.autofillForms", false);
-user_pref("signon.insecure_password.ui.enabled", false);
-user_pref("security.insecure_field_warning.contextual.enabled", false);
-user_pref("network.auth.subresource-img-cross-origin-http-auth-allow", false);
 
 
+// Translation Preferences
+user_pref("browser.translation.detectLanguage", true);
+user_pref("browser.translation.ui.show", true);
+user_pref("browser.translation.engine", "bing");
+user_pref("browser.translation.bing.clientId", );
+user_pref("browser.translation.bing.apiKeyOverride", );
 
 // Tracking Protection
 user_pref("privacy.donottrackheader.enabled", true);
@@ -327,52 +372,8 @@ user_pref("privacy.trackingprotection.enabled", false);
 
 
 
-// Browser Feature Preferences
-user_pref("pdfjs.disabled", true);
-user_pref("reader.parse-on-load.enabled", false);
-user_pref("experiments.enabled", false);
-user_pref("extensions.formautofill.available", "off");
-user_pref("extensions.pocket.enabled", false);
-user_pref("extensions.screenshots.disabled", false);
-
-
-
-// Scrollbar Preferences
-user_pref("general.autoScroll", false);
-user_pref("general.smoothScroll", false);
-user_pref("ui.scrollToClick", 1);
-user_pref("slider.snapMultiplier", 0);
-
-
-
-// Plugin Preferences
-user_pref("dom.ipc.plugins.asyncInit.enabled", true);
-user_pref("dom.ipc.plugins.asyncdrawing.enabled", true);
-user_pref("plugins.click_to_play", true);
-
-// Image Preferences
-user_pref("image.mem.discardable", true);
-user_pref("image.mem.animated.discardable", true);
-user_pref("image.mem.allow_locking_in_content_processes", true);
-user_pref("image.mem.shared", true);
-user_pref("image.multithreaded_decoding.limit", -1);
-
-// Video & Audio Preferences
-user_pref("html5.offmainthread", true);
-user_pref("media.hardware-video-decoding.enabled", true);
-user_pref("media.gpu-process-decoder", true);
-user_pref("media.suspend-bkgnd-video.enabled", true);
-//user_pref("media.suspend_bkgnd-video.delay-ms", 8000);
-//user_pref("media.dormant-on-pause-timeout-ms", 2000);
-user_pref("media.autoplay.enabled", false);
-user_pref("media.autoplay.enabled.user-gestures-needed", true);
-user_pref("media.block-play-until-visible", false);
-user_pref("media.block-autoplay-until-in-foreground", false);
-
-
 
 user_pref("dom.animations.offscreen-throttling", true);
-user_pref("security.data_uri.unique_opaque_origin", true);
 
 
 // Browser Preferences
@@ -383,3 +384,5 @@ user_pref("browser.chrome.toolbar_tips", false);
 user_pref("browser.places.useAsyncTransactions", true);
 user_pref("browser.taskbar.lists.enabled", false);
 user_pref("browser.taskbar.previews.enable", false);
+//user_pref("browser.startup.blankWindow", true);
+user_pref("security.data_uri.unique_opaque_origin", true);
